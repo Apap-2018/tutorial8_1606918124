@@ -1,0 +1,10 @@
+1. Apa fungsi BCryptPasswordEncoder?
+Fungsi BCryptPasswordEncoder adalah untuk melakukan hashing terhadap raw password
+yang diinput oleh user pada setiap form yang mengandung password. BCryptPasswordEncoder
+juga dapat digunakan untuk melakukan matching password lama yang diinput
+dalam bentuk raw terhadap password lama di database dalam bentuk hash yang diterapkan
+pada fitur update password.
+
+2. Apa yang dilakukan baris berikut?
+Kode tersebut memiliki fungsi untuk menambahkan authorization sesuai role yang dimiliki
+oleh user tersebut.
