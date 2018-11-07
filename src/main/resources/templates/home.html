@@ -12,7 +12,7 @@
 	<nav th:replace="fragments/fragment :: navbar"></nav>
 
 	<div class="container-fluid">
-		<h2 th:text=" 'Hello ' + ${#httpServletRequest.remoteUser} + ' !'">Login as</h2>
+		<h2 th:text=" 'Hello ' + ${#httpServletRequest.remoteUser} + '!'">Login as</h2>
 
 		<div class="row">
 			<div class="col-md-6">
@@ -21,6 +21,7 @@
 				<div class="card">
 					<div class="card-header">Tambah User Baru</div>
 					<div class="card-body">
+						<div th:if="${suksesTambah}" th:text="${suksesTambah}" class="alert alert-success" role="alert"></div>
 						<form th:action="@{/user/addUser}" method="POST">
 							<div class="row form-group">
 								<label class="col-sm-4">User Name: </label>
@@ -46,8 +47,8 @@
 				<div class="card">
 					<div class="card-header">Update Password</div>
 					<div class="card-body">
-						<div th:if="${gagal}" th:text="${gagal}" class="alert alert-danger" role="alert"></div>
-						<div th:if="${sukses}" th:text="${sukses}" class="alert alert-success" role="alert"></div>
+						<div th:if="${gagalUpdate}" th:text="${gagalUpdate}" class="alert alert-danger" role="alert"></div>
+						<div th:if="${suksesUpdate}" th:text="${suksesUpdate}" class="alert alert-success" role="alert"></div>
 						<form th:action="@{/user/updatePassword}" method="POST">
 							<input type="hidden" name="username" th:value="${#httpServletRequest.userPrincipal.name}">
 							<div class="row form-group">

@@ -17,7 +17,8 @@ public class UserRoleController {
 	private UserRoleService userService;
 
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
-	private String addUserSubmit(@ModelAttribute UserRoleModel user) {
+	private String addUserSubmit(@ModelAttribute UserRoleModel user, Model model) {
+		model.addAttribute("suksesTambah", "User baru berhasil ditambah.");
 		userService.addUser(user);
 		return "home";
 	}
@@ -30,14 +31,14 @@ public class UserRoleController {
 			if (passwordBaru.equals(passwordBaruConfirm)) {
 				user.setPassword(passwordBaru);
 				userService.addUser(user);
-				model.addAttribute("sukses", "Password berhasil diubah."); 
+				model.addAttribute("suksesUpdate", "Password berhasil diubah."); 
 			}
 			else {
-				model.addAttribute("gagal", "Konfirmasi Password Baru tidak sama dengan Password Baru");
+				model.addAttribute("gagalUpdate", "Konfirmasi Password Baru tidak sama dengan Password Baru");
 			}
 		}
 		else {
-			model.addAttribute("gagal", "Password lama salah.");
+			model.addAttribute("gagalUpdate", "Password lama salah.");
 		}
 		return "home";
 	}
