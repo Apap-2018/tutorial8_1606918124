@@ -30,5 +30,11 @@ public class UserRoleServiceImpl implements UserRoleService {
 	public UserRoleModel findUserByUsername(String username) {
 		return userDb.findByUsername(username);
 	}
+
+	@Override
+	public boolean isMatch(String passwordLama, String hashedPassword) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		return passwordEncoder.matches(passwordLama, hashedPassword);
+	}
 	
 }
